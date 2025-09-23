@@ -77,3 +77,27 @@ li a {
 .hero p {
     width: 700px;
 }
+.genre-category {
+    margin-top: 80px;
+}
+.genre-category h1 {
+    font-size: 18px;
+}
+.genre-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x:auto;
+    padding: 0;
+    margin: 0;
+    gap: 20px;
+}
+.genre-list li {
+    min-width: 200px;
+    border: 1px solid black;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+    box-sizing: border-box;
+    
+}
