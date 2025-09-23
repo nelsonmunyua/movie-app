@@ -82,6 +82,10 @@ li a {
 }
 .genre-category h1 {
     font-size: 18px;
+    margin-bottom: 4px;
+}
+.genre-category > p {
+    margin-bottom: 20px;
 }
 .genre-list {
     list-style: none;
@@ -91,13 +95,22 @@ li a {
     padding: 0;
     margin: 0;
     gap: 20px;
+    scrollbar-width: none;
 }
 .genre-list li {
-    min-width: 200px;
+    min-width: fit-content;
     border: 1px solid black;
     padding: 10px 20px;
     background-color: #f0f0f0;
     border-radius: 20px;
     box-sizing: border-box;
-    
+
+    /* Add transition property for smooth changes*/
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
 }
+.genre-list li:hover {
+    background-color: aqua;
+    transform: translateY(-5);
+}
+

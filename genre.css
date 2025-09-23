@@ -1,0 +1,54 @@
+
+/* genre.html styles */
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 20px;
+  background-color: #121212;
+  color: #fff;
+}
+
+.genre-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.movie-card {
+  text-align: center;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #1e1e1e;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.movie-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.movie-title {
+  padding: 10px;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.loading-indicator {
+  text-align: center;
+  margin: 20px;
+  display: none; /* Hide by default */
+}
+
+/* Back link on genre page */
+header a {
+  color: #fff;
+  text-decoration: none;
+}

@@ -1,57 +1,78 @@
+// Method to attach an event handler to the document object
 document.addEventListener("DOMContentLoaded", () => {
-    const genreList = document.querySelector('.genre-list');
+    // This line of code loads a class element into js for DOM manipulation
+  const genreList = document.querySelector(".genre-list");
+  const moviesList = document.querySelector(".movies-list");
 
   const baseUrl = "https://api.themoviedb.org/3/";
   const apiKey = "50a540b448a228f9f2f710a36c248b31";
 
-
-//   // Specify the endpoint to use.
-
-//   //const endPoint = "movie/popular";
-
-//   // Add the API key as the query parameter
-//   const fullUrl = `${baseUrl}${endPoint}?api_key=${apiKey}`;
-
-//   fetch(fullUrl)
-//     .then((response) => {
-//       if (!response.ok) {
-//         // Check for network errors
-//         throw new Error(`HTTP error: ${response.status}`);
-//       }
-//       return response.json();
-//     })
-//     .then((data) => {
-//       // Log data to the console
-//       console.log(data);
-//     })
-//     .catch((error) => {
-//       // Catch any errors that occur during the fetch operation
-//       console.error("Fetch error:", error);
-//     });
-fetch(`${baseUrl}genre/movie/list?api_key=${apiKey}`)
-.then((response) => {
-    if(!response.ok) {
-        throw new Error(`HTTP Error:${response.status}`)
+  // Add an event listener to the parent <ul> element (event delegation)
+  genreList.addEventListener("click", (event) => {
+    // This code listens for the click event and cross checks if it is the expected element that was clicked
+    const clickedGenre = event.target;
+    if (clickedGenre.tagName === "LI") {
+      const genreId = clickedGenre.dataset.id;
+      fetchMoviesByGenre(genreId);
     }
-    return response.json();
-})
-.then((data) => {
-    // clear any exixsting content
-    if (genreList) {
-    genreList.innerHTML = '';
+  });
 
-    data.genres.forEach((genre) => {
-        const listItem = document.createElement('li');
+  //Function to fetch all the movies details belonging to each individual genre
+  const fetchMoviesByGenre = (genreId) => {
+    fetch(`${baseUrl}discover/movie?api_key=${apiKey}&with_genres=${genreId}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP Error:${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (moviesList) {
+            moviesList.innerHTML = '';
+            data.results.forEach(movie => {
+                const movieItem = document.createElement('div');
+                movieItem.textContent = movie.title;
+                moviesList.appendChild(movieItem);
+            })
+        }
+      });
+  };
 
-        listItem.textContent = genre.name;
-        console.log(listItem);
-        genreList.appendChild(listItem)
+  fetch(`${baseUrl}genre/movie/list?api_key=${apiKey}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP Error:${response.status}`);
+      }
+      return response.json();
+    })
+    .then((data) => {
+      // clear any exixsting content
+      if (genreList) {
+        genreList.innerHTML = "";
+
+        data.genres.forEach((genre) => {
+          const listItem = document.createElement("li");
+
+          // Create an anchor tag that links to genre,html with URL parameter
+           const genreLink = document.createElement('a');
+           genreLink.href = `genre.html?id=${genre.id}&name=${encodeURIComponent(genre.name)}`
+           genreLink.textContent = genre.name;
+
+
+          // set the data-id attribute with genre's ID
+          listItem.dataset.id = genre.id;
+
+          // set the data-name attribute with genre's name
+          listItem.textContent = genre.name;
+          
+          listItem.appendChild(genreLink);
+          genreList.appendChild(listItem);
+        });
+      } else {
+        console.error("The element with class 'genre-list' was not found");
+      }
+    })
+    .catch((error) => {
+      console.error("Fetch error:", error);
     });
-}else {
-    console.error("The element with class 'genre-list' was not found")
-}
-})
-.catch((error) => {
-    console.error("Fetch error:", error);
-});
 });
