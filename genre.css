@@ -1,4 +1,3 @@
-
 /* genre.html styles */
 body {
   font-family: sans-serif;
@@ -44,7 +43,7 @@ body {
 .loading-indicator {
   text-align: center;
   margin: 20px;
-  display: none; /* Hide by default */
+  display: none;
 }
 
 /* Back link on genre page */

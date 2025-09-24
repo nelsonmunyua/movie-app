@@ -22,14 +22,18 @@
     <nav class="nav nav-bar">
       <img src="./images/movie-logo.jpg" class="logo-container" alt="" />
 
-      <!-- <form action="/search" method="get" class="search-form">
-        <input type="search" placeholder="Search..." name="q" />
-        <i class="fa-solid fa-magnifying-glass search-icon"></i>
-        <button type="submit"></button>
-      </form> -->
       <div class="search-container">
-        <input type="text" placeholder="Search..." class="search-input" />
-        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <form id="search-form">
+          <input
+            type="text"
+            placeholder="Search..."
+            class="search-input"
+            id="search-input"
+          />
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        </form>
+        <!-- Dropdown container for search results -->
+        <div class="search-dropdown-results" id="search-dropdown-results"></div>
       </div>
       <ul class="nav-items">
         <li>

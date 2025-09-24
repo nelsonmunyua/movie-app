@@ -12,11 +12,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const apiKey = "50a540b448a228f9f2f710a36c248b31";
   const posterBaseUrl = "https://image.tmdb.org/t/p/w500";
 
-  const genreTitleElem = document.getElementById('genre-title');
-  const genreDescElem = document.getElementById('genre-description');
-  const movieGridElem = document.querySelector('.movie-grid');
-  const loadingIndicator = document.querySelector('.loading-indicator');
-  const sentinel = document.querySelector('.sentinel');
+  const genreTitleElem = document.getElementById("genre-title");
+  const genreDescElem = document.getElementById("genre-description");
+  const movieGridElem = document.querySelector(".movie-grid");
+  const loadingIndicator = document.querySelector(".loading-indicator");
+  const sentinel = document.querySelector(".sentinel");
 
   // Set the title and description dynamically
   genreTitleElem.textContent = `${genreName} Movies & TV Shows`;
@@ -28,9 +28,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const fetchMovies = (page) => {
     if (isLoading) return;
     isLoading = true;
-    loadingIndicator.style.display = 'block';
+    loadingIndicator.style.display = "block";
 
-    fetch(`${baseUrl}discover/movie?api_key=${apiKey}&with_genres=${genreId}&page=${page}`)
+    fetch(
+      `${baseUrl}discover/movie?api_key=${apiKey}&with_genres=${genreId}&page=${page}`
+    )
       .then((response) => {
         if (!response.ok) {
           throw new Error(`HTTP Error: ${response.status}`);
@@ -40,9 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((data) => {
         // Render the movies here
         data.results.forEach((movie) => {
-          const movieCard = document.createElement('div');
-          movieCard.classList.add('movie-card');
-          const posterPath = movie.poster_path ? `${posterBaseUrl}${movie.poster_path}` : 'placeholder.png';
+          const movieCard = document.createElement("div");
+          movieCard.classList.add("movie-card");
+          const posterPath = movie.poster_path
+            ? `${posterBaseUrl}${movie.poster_path}`
+            : "placeholder.png";
           movieCard.innerHTML = `
             <img src="${posterPath}" alt="${movie.title}">
             <div class="movie-title">${movie.title}</div>
@@ -57,10 +61,10 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .finally(() => {
         isLoading = false;
-        loadingIndicator.style.display = 'none';
+        loadingIndicator.style.display = "none";
       });
   };
-  
+
   // IntersectionObserver logic to trigger `fetchMovies`
   // when the user scrolls to the sentinel element.
   const observer = new IntersectionObserver((entries) => {
@@ -70,5 +74,4 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   observer.observe(sentinel);
-  
 });

@@ -1,54 +1,46 @@
-*{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 400;
-    max-width: 1200px;
-    height: 100vh;
-    margin: 0 auto;
-    width: 90%;
-    
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  max-width: 1200px;
+  height: 100vh;
+  margin: 0 auto;
+  width: 90%;
 }
 .nav {
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 .logo-container {
-    height: 50px;
-    width: 50px;
-    border-radius: 50px;
-    margin-right: 10px;
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  margin-right: 10px;
 }
 .nav-items {
-    display: flex;
-    margin: 0 auto;
-    list-style: none;
-    gap: 50px;
+  display: flex;
+  margin: 0 auto;
+  list-style: none;
+  gap: 50px;
 }
 li a {
-    text-decoration: none;
-    font-size: 18px;
-    color: black;
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
 }
 #signin a {
-    text-decoration: none;
-    font-size: 18px;
-    color: black;
-
+  text-decoration: none;
+  font-size: 18px;
+  color: black;
 }
-/* .search-form input {
-    height: 30px;
-    width: 250px;
-    border-radius: 14px;
-    padding: 10px;
-} */
- .search-container {
+
+.search-container {
   position: relative;
   width: 250px; /* Adjust as needed */
 }
@@ -62,55 +54,94 @@ li a {
 
 .search-icon {
   position: absolute;
-  right: 10px; /* Adjust position */
+  right: 10px;
   top: 50%;
   transform: translateY(-50%);
   color: black;
 }
+/* Initially hide the dropdown */
+.search-dropdown-results {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: cornflowerblue;
+  border: 1px solid burlywood;
+  border-top: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 10;
+  color: #000;
+}
+.search-dropdown-results .show {
+  display: block;
+}
+.search-dropdown-results .dropdown-item {
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 1px solid blue;
+  display: flex;
+  align-items: center;
+}
+.search-dropdown-results .dropdown-item:hover {
+  background-color: yellowgreen;
+}
+.search-dropdown-results .dropdown-item img {
+  width: 40px;
+  height: 60px;
+  margin-right: 10px;
+  object-fit: cover;
+}
+.search-dropdown-results .dropdown-item .title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .hero {
-    margin-top: 40px;
-    
+  margin-top: 40px;
 }
 .hero h2 {
-    font-size: 30px;
+  font-size: 30px;
 }
 .hero p {
-    width: 700px;
+  width: 700px;
 }
 .genre-category {
-    margin-top: 80px;
+  margin-top: 80px;
 }
 .genre-category h1 {
-    font-size: 18px;
-    margin-bottom: 4px;
+  font-size: 18px;
+  margin-bottom: 4px;
 }
 .genre-category > p {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 .genre-list {
-    list-style: none;
-    display: flex;
-    flex-wrap: nowrap;
-    overflow-x:auto;
-    padding: 0;
-    margin: 0;
-    gap: 20px;
-    scrollbar-width: none;
+  list-style: none;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  padding: 0;
+  margin: 0;
+  gap: 20px;
+  scrollbar-width: none;
+  font-size: 14px;
 }
 .genre-list li {
-    min-width: fit-content;
-    border: 1px solid black;
-    padding: 10px 20px;
-    background-color: #f0f0f0;
-    border-radius: 20px;
-    box-sizing: border-box;
+  min-width: fit-content;
+  border: 1px solid black;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 25px;
+  box-sizing: border-box;
 
-    /* Add transition property for smooth changes*/
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    cursor: pointer;
+  /* Add transition property for smooth changes*/
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  cursor: pointer;
 }
 .genre-list li:hover {
-    background-color: aqua;
-    transform: translateY(-5);
+  background-color: rgba(82, 108, 138, 0.432);
+  transform: translateY(-5);
 }
-
